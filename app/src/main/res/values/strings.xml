@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AuthCleanArch</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="plate_number">Plate number</string>
+    <string name="vehicles_model">Vehicles model</string>
+    <string name="vehicles_info">Vehicles info</string>
+</resources>
