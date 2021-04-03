@@ -14,12 +14,13 @@ class SplashActivity : AppCompatActivity() {
 
     private val splashScreenTime: Long = 2000
     private lateinit var binding: ActivitySplashBinding
-    private val authPreferences = AuthPreferences(this)
+    private lateinit var authPreferences: AuthPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        authPreferences = AuthPreferences(this)
         if (authPreferences.getToken().isNullOrBlank()) {
             Handler(mainLooper).postDelayed({
                 startActivity(Intent(this, SignInActivity::class.java))

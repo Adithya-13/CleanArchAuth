@@ -8,6 +8,6 @@ import com.codext.project.core.data.source.remote.response.register.RegisterResp
 import kotlinx.coroutines.flow.Flow
 
 interface AuthUseCase {
-    fun doLogin(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>>
-    fun doRegister(registerRequest: RegisterRequest): Flow<ApiResponse<RegisterResponse>>
+    suspend fun doLogin(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>>
+    suspend fun doRegister(registerRequest: RegisterRequest): Flow<ApiResponse<RegisterResponse>>
 }

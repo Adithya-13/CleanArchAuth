@@ -1,5 +1,6 @@
 package com.codext.project.core.data.source
 
+import android.util.Log
 import com.codext.project.core.data.source.remote.RemoteDataSource
 import com.codext.project.core.data.source.remote.network.ApiResponse
 import com.codext.project.core.data.source.remote.request.login.LoginRequest
@@ -15,11 +16,12 @@ import javax.inject.Singleton
 class AuthRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
 ) : IAuthRepository {
-    override fun doLogin(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>> {
+    override suspend fun doLogin(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>> {
+        Log.d("blabla5", loginRequest.toString())
         return remoteDataSource.doLogin(loginRequest)
     }
 
-    override fun doRegister(registerRequest: RegisterRequest): Flow<ApiResponse<RegisterResponse>> {
+    override suspend fun doRegister(registerRequest: RegisterRequest): Flow<ApiResponse<RegisterResponse>> {
         return remoteDataSource.doRegister(registerRequest)
     }
 }

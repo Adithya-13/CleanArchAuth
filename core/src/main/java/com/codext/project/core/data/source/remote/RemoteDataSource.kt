@@ -16,16 +16,18 @@ import javax.inject.Singleton
 
 @Singleton
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
-    fun doLogin(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>> {
+    suspend fun doLogin(loginRequest: LoginRequest): Flow<ApiResponse<LoginResponse>> {
         return flow {
             try {
                 val response = apiService.doLogin(loginRequest)
+                Log.d("blabla6", response.toString())
                 if (response.success) {
                     emit(ApiResponse.Success(response))
                 } else {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
+                Log.d("blabla6", e.toString())
                 emit(ApiResponse.Error(e.toString()))
                 Log.e(RemoteDataSource::class.simpleName, e.toString())
             }
@@ -36,6 +38,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.doRegister(registerRequest)
+                Log.d("blabla1", response.toString())
                 if (response.success) {
                     emit(ApiResponse.Success(response))
                 } else {
